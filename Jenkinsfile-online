@@ -49,7 +49,7 @@ pipeline {
 
         stage('push latest'){
            when{
-             branch 'main'
+             branch 'master'
            }
            steps{
                 container ('maven') {
@@ -61,7 +61,7 @@ pipeline {
 
         stage('deploy to dev') {
           when{
-            branch 'main'
+            branch 'master'
           }
           steps {
             input(id: 'deploy-to-dev', message: 'deploy to dev?')
