@@ -64,7 +64,6 @@ pipeline {
             branch 'master'
           }
           steps {
-            //input(id: 'deploy-to-dev', message: 'deploy to dev?')
             container ('maven') {
                 withCredentials([
                     kubeconfigFile(
@@ -84,7 +83,6 @@ pipeline {
           }
           steps {
               container ('maven') {
-                //input(id: 'release-image-with-tag', message: 'release image with tag?')
                   withCredentials([usernamePassword(credentialsId: "$GITHUB_CREDENTIAL_ID", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh 'git config --global user.email "kubesphere@yunify.com" '
                     sh 'git config --global user.name "kubesphere" '
